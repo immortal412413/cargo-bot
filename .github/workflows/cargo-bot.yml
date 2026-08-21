@@ -1,0 +1,13 @@
+
+name: Cargo Bot
+
+on:
+  workflow_dispatch:
+
+jobs:
+  cargo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Bot placeholder
+        run: echo "Cargo bot will go here."
