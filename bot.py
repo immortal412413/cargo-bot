@@ -9,27 +9,24 @@ ROLE_ID = int(os.environ["ROLE"])
 
 intents = discord.Intents.default()
 intents.message_content = True
+intents.guilds = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 @bot.event
 async def on_ready():
-    print(f"Logged in as {bot.user}")
+    print(f"✅ Logged in as {bot.user}")
 
 @bot.command()
 async def test(ctx):
-    channel = bot.get_channel(CHANNEL_ID)
-
     embed = discord.Embed(
         title="🚢 Cargo Ship Spawned!",
-        description="Storage Hunters Cargo Ship is LIVE!",
+        description="This is a test notification.",
         color=0x3498DB
     )
 
-    embed.add_field(name="Status", value="🟢 ACTIVE")
-    embed.add_field(name="Time Left", value="15 minutes")
-
+    channel = bot.get_channel(CHANNEL_ID)
     await channel.send(f"<@&{ROLE_ID}>", embed=embed)
-    await ctx.send("✅ Test notification sent!")
+    await ctx.reply("✅ Test sent!")
 
 bot.run(TOKEN)
