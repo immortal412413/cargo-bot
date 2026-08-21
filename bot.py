@@ -8,6 +8,8 @@ CHANNEL_ID = int(os.environ["CHANNEL"])
 ROLE_ID = int(os.environ["ROLE"])
 
 intents = discord.Intents.default()
+intents.message_content = True
+
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 @bot.event
